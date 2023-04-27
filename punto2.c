@@ -13,8 +13,8 @@ int pedirNumTareas();
 void preguntarMostrar(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas);
 void mostrarTareas(Tarea **tareas, int cantTareas);
 void moverTareas(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas);
-void buscarTareasId(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas);
-void buscarTareasPalabra(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas);
+void BuscaTareaPorId(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas);
+void BuscaTareaPorPalabra(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas);
 
 int main(){
     int numTareas;
@@ -94,7 +94,7 @@ void moverTareas(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas){
     }
 }
 
-void buscarTareasId(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas){
+void BuscaTareaPorId(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas){
     int id;
     printf("Ingrese el id de la tarea que quiere buscar: ");
     scanf("%d", &id);
@@ -116,7 +116,7 @@ void buscarTareasId(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas){
     }
 }
 
-void buscarTareasPalabra(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas){
+void BuscaTareaPorPalabra(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas){
     char palabra[20];
     printf("Ingrese palabra clave: ");
     fflush(stdin);
