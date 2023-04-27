@@ -13,8 +13,8 @@ int pedirNumTareas();
 void preguntarMostrar(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas);
 void mostrarTareas(Tarea **tareas, int cantTareas);
 void moverTareas(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas);
+void buscarTareasId(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas);
 void buscarTareasPalabra(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas);
-
 
 int main(){
     int numTareas;
@@ -91,6 +91,28 @@ void moverTareas(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas){
             tareas[i] = NULL;
         }
         printf("-----------------------\n");
+    }
+}
+
+void buscarTareasId(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas){
+    int id;
+    printf("Ingrese el id de la tarea que quiere buscar: ");
+    scanf("%d", &id);
+    for (int i = 0; i < cantTareas; i++){
+        if ((tareas[i] != NULL) && (tareas[i]->tareaID == id)){
+            printf("PENDIENTE\n");
+            printf("ID de la tarea: %d\n", tareas[i]->tareaID);
+            printf("Descripcion: ");
+            puts(tareas[i]->desc);
+            printf("Duracion: %d\n", tareas[i]->duracion);
+        }
+        if ((tareasRealizadas[i]!=NULL) && (tareasRealizadas[i]->tareaID == id)) {
+            printf("REALIZADA\n");
+            printf("ID de la tarea: %d\n", tareasRealizadas[i]->tareaID);
+            printf("Descripcion: ");
+            puts(tareasRealizadas[i]->desc);
+            printf("Duracion: %d\n", tareasRealizadas[i]->duracion);
+        }
     }
 }
 
