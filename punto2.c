@@ -17,7 +17,7 @@ void BuscaTareaPorId(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas);
 void BuscaTareaPorPalabra(Tarea **tareas, Tarea **tareasRealizadas, int cantTareas);
 
 int main(){
-    int numTareas;
+    int numTareas, opcion;
     numTareas = pedirNumTareas();
     srand(time(NULL));
     Tarea **tareas = (Tarea **)malloc(numTareas * sizeof(Tarea *));
@@ -37,10 +37,34 @@ int main(){
         fflush(stdin);
         gets(tareas[i]->desc);
         tareas[i]->duracion = rand() % (100 - 10 + 1) + 10;
+        printf("-----------------------\n");
     }
     moverTareas(tareas,tareasRealizadas, numTareas);
-    preguntarMostrar(tareas, tareasRealizadas, numTareas);
-    buscarTareasPalabra(tareas, tareasRealizadas, numTareas);
+    mostrarTareas(tareas, numTareas);
+    mostrarTareas(tareasRealizadas, numTareas);
+    do{
+        printf("---------MENU---------\n");
+        printf("Elige una de las siguiente opciones:\n");
+        printf("1 - Buscar tarea por id\n2 - Buscar tarea por palabra\n3 - Ver listas\n0 - Salir del programa\n");
+        scanf("%d", &opcion);
+        switch (opcion)
+        {
+        case 1:
+            BuscaTareaPorId(tareas, tareasRealizadas, numTareas);
+            break;
+        case 2:
+            BuscaTareaPorPalabra(tareas, tareasRealizadas, numTareas);
+            break;
+        
+        case 3:
+            preguntarMostrar(tareas, tareasRealizadas, numTareas);
+            break;
+        
+        default:
+            break;
+        }
+    }while(opcion != 0);
+
     return 0;
 }
 
@@ -71,8 +95,8 @@ void mostrarTareas(Tarea **tareas, int cantTareas){
             printf("Descripcion: ");
             puts(tareas[i]->desc);
             printf("Duracion: %d\n", tareas[i]->duracion);
+            printf("-----------------------\n");
         }
-        printf("-----------------------\n");
     }
 }
 
